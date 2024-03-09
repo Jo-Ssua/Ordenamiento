@@ -69,12 +69,17 @@ public class Example {
         // El ciclo de afuera sirve para recorrer cada elemento de la lista
         // El ciclo de adentro sirve para encontrar el menor, compara
 
+        //NodeD current = first;
+        Nodo current = first.getNext();
+        boolean flag = false;
+
         while (first != null) {
 
             Nodo minor = first;
-            Nodo current = first.getNext();
 
             while (current != null && current.getNext().getDato() != current.getDato()) {
+
+                //NodeD next = current.getNext();
 
                 if (current.compareTo(minor) == -1) {
 
@@ -86,9 +91,28 @@ public class Example {
 
                 }
 
+                else if(minor.compareTo(current) == 1) {
+
+                    flag = true;
+                    break;
+
+                }
+
+                minor = minor.getNext();
+
             }
 
-            minor = current;
+            if(flag) {
+
+                minor.setNext(current.getNext());
+                current.setNext(minor);
+                current.getNext().setPrev(minor);
+                current.setPrev(null);
+                minor.setPrev(current);
+
+            }
+
+            //minor = current;
             current = current.getNext();
 
         }
