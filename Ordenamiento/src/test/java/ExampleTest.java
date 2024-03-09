@@ -27,14 +27,8 @@ public class ExampleTest {
 
     @Test
     public void organizeNodesTest(){
-        for (int i = 10; 0 <=i ; i--) {
-            ex.organizeNodes(i);
-        }
-
-        ex.organizeNodes(20);
-        ex.organizeNodes(12);
-        ex.organizeNodes(0);
-        assertEquals("[0][0][1][2][3][4][5][6][7][8][9][10][12][20]",ex.printList());
+       ex.organizeNodes(2);
+        assertEquals("[0][0][1][2][2][3][4][5][6][7][8][9][10][12][20]",ex.printList());
 
     }
 
