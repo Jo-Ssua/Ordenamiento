@@ -64,24 +64,37 @@ public class Example {
         }
     }
 
-    public void insertInTheStart(int val) {
+    public void insertionSort() {
 
-        if (first == null) {
+        // El ciclo de afuera sirve para recorrer cada elemento de la lista
+        // El ciclo de adentro sirve para encontrar el menor, compara
 
-            Nodo newNode = new Nodo(val);
-            first = newNode;
-            last = first;
+        while (first != null) {
 
-        } else {
+            Nodo minor = first;
+            Nodo current = first.getNext();
 
-            Nodo newNode = new Nodo(val);
-            newNode.setNext(first);
-            first.setPrev(newNode);
-            first = newNode;
+            while (current != null && current.getNext().getDato() != current.getDato()) {
+
+                if (current.compareTo(minor) == -1) {
+
+                    minor.setNext(current.getNext());
+                    current.setNext(minor);
+                    current.getNext().setPrev(minor);
+                    current.setPrev(null);
+                    minor.setPrev(current);
+
+                }
+
+            }
+
+            minor = current;
+            current = current.getNext();
 
         }
 
     }
+
 
     public void organizeNodes(int value){
         Nodo current = new Nodo (value);
